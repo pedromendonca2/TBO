@@ -1,0 +1,7 @@
+A estrutura de dados utilizada foi a "struct". Ela faz com que não seja necessário criar uma nova lista e é simples de ser desalocada.
+
+Memory consumption in bytes for N = 100_000:
+
+sieve_int	mem_heap_B=800000
+sieve_bool	mem_heap_B=800000
+sieve_bit	
