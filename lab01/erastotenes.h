@@ -1,15 +1,12 @@
-#ifndef LAB_H
+#ifndef ERASTOTENES_H
 #define FILE_H
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+#include <stdbool.h> 
 
 typedef struct num tNum;
-
-struct num{
-    int num;
-    int flag;
-};
 
 void preencheLista(tNum* lista, int n);
 

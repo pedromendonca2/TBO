@@ -1,4 +1,9 @@
-#include "bool.h"
+#include "erastotenes.h"
+
+struct num{
+    int num;
+    bool flag;
+};
 
 void preencheLista(tNum* lista, int n){
     for(int j=0, i=2; j<n; j++, i++){
@@ -31,9 +36,15 @@ int main(int argc, char* argv[]){
 
     preencheLista(lista, N);
 
+    clock_t start, stop;
+
+    start = clock();
     marcaNaoPrimos(lista, N);
+    stop = clock();
 
     //imprimeListaPrimos(lista, N);
+    double time_taken = ((double) stop - start) / CLOCKS_PER_SEC;
+    printf("Elapsed time: %.3f\n", time_taken);
 
     free(lista);
 

@@ -1,7 +1,19 @@
-A estrutura de dados utilizada foi a "struct". Ela faz com que não seja necessário criar uma nova lista e é simples de ser desalocada.
+A estrutura de dados utilizada foi a "struct". 
+Ela faz com que não seja necessário criar uma nova lista e é simples de ser desalocada.
+
+-
 
 Memory consumption in bytes for N = 100_000:
 
-sieve_int	mem_heap_B=800000
-sieve_bool	mem_heap_B=800000
-sieve_bit	
+sieve_int	bytes allocated = 800000
+sieve_bool	bytes allocated = 800000
+sieve_bit	bytes allocated = 12504
+
+-
+
+Running time (in sec.) vs. array type
+
+N	10^3	10^4	10^5	10^6	10^7	10^8	10^9	10^10
+int	0.000; 0.024; 1.789; 146.517; - ; - ; - ; - ; - ; - 
+bool 0.000; 0.024; 1.791; 146.068; - ; - ; - ; - ; - ; - 
+bit	0.000; 0.024; 1.779; 143.996; - ; - ; - ; - ; - ; - 
