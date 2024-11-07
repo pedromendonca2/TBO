@@ -65,9 +65,9 @@ int main(int argc, char* argv[]){
 
     stop = clock();
     double time_taken = ((double) stop - start) / CLOCKS_PER_SEC;
-    printf("Elapsed time: %.3f\n", time_taken);
 
     //imprimeArray(removed, N);
+    printf("Elapsed time: %.3f\n", time_taken);
 
     return 0;
 }

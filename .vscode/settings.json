@@ -2,6 +2,7 @@
     "files.associations": {
         "erastotenes.h": "c",
         "stdbool.h": "c",
-        "josefo_1.h": "c"
+        "josefo_1.h": "c",
+        "stdio.h": "c"
     }
 }

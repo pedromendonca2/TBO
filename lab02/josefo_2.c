@@ -17,8 +17,6 @@ int main(int argc, char* argv[]){
 	clock_t start, stop;
     start = clock();
 
-	int valor;	
-
 	LISTA* lista = lista_inicia();
     LISTA* listaRemovidos = lista_inicia();
 
