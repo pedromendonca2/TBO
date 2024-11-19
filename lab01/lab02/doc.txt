@@ -1,0 +1,18 @@
+A estrutura de dados utilizada no primeiro código foi simplesmente array, 
+já no segundo, foi a lista circular duplamente encadeada.
+
+-
+
+Memory consumption in bytes for N = 100_000:
+
+sieve_josefo_1:	bytes allocated = 1024
+sieve_josefo_2:	bytes allocated = 4801048
+
+-
+
+Running time (in sec.)
+
+M 10
+N	        10^3	10^4	10^5	10^6	10^7	10^8	10^9	10^10
+josefo_1	0.002; 0.258; 32.182; - ; - ; - ; - ; - ; - ; -
+josefo_2    0.000; 0.001; 0.017; 0.300; 3.514 ; 34.945 ; - ; - ; - ; - 

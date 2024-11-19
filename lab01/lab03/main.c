@@ -1,7 +1,7 @@
 #include "pilha.h"
 
-void printInt(void* element){
-    printf(" %d", *(int*)element);
+void printDouble(void* element){
+    printf(" %f", *(double*)element);
 }
 
 void printChar(void* element){
@@ -13,14 +13,14 @@ void makeOperation(tStack* s1, tStack* s2){
     char operator = *operatorPtr;
     free(operatorPtr);
 
-    int* n1Ptr = (int*)pop(s1);
-    int* n2Ptr = (int*)pop(s1);
-    int n1 = *n1Ptr;
-    int n2 = *n2Ptr;
+    double* n1Ptr = (double*)pop(s1);
+    double* n2Ptr = (double*)pop(s1);
+    double n1 = *n1Ptr;
+    double n2 = *n2Ptr;
     free(n1Ptr);
     free(n2Ptr);
 
-    int result;
+    double result;
 
     switch(operator){
         case '+':
@@ -40,9 +40,9 @@ void makeOperation(tStack* s1, tStack* s2){
         break;
     }
 
-    printf(" Result: %d\n", result);
+    //printf(" Result: %d\n", result);
 
-    int* op = malloc(sizeof(int));
+    double* op = malloc(sizeof(double));
     *op = result;
     push(s1, op);
 }
@@ -69,10 +69,10 @@ int main(){
         if(expression[i] == ')'){
             makeOperation(stack_1, stack_2);
         } else if(expression[i] >= '0' && expression[i] <= '9'){
-            int* num = malloc(sizeof(int));
-            *num = expression[i] - '0';  // Converte caractere numérico para inteiro
+            double* num = malloc(sizeof(double));
+            *num = expression[i] - '0';  // Converte caractere numérico para double
             push(stack_1, num);
-            display(stack_1, printInt);
+            //display(stack_1, printInt);
         } else if(expression[i] == '(' || expression[i] == ' '){
             i++;
             continue;
@@ -85,8 +85,8 @@ int main(){
         i++;
     }
 
-    printf("FINAL:\n");
-    display(stack_1, printInt);
+    printf("FINAL:");
+    display(stack_1, printDouble);
 
     liberaArray(stack_1);
     liberaArray(stack_2);

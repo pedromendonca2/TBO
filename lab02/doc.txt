@@ -1,18 +1,26 @@
-A estrutura de dados utilizada no primeiro código foi simplesmente array, 
-já no segundo, foi a lista circular duplamente encadeada.
+ITER    HEIGHT
+0       47
+1       56
+2       48
+3       47
+4       51
+5       48
+6       47
+7       59
+8       52
+9       48
+AVG     50,3
+STD     4,001
+
+1. Existe baixa variação entre os resultados da árvore
+2. A altura máxima (no caso da árvore degenerada) é N-1; já a altura mínima é log2(N)
+3. A média é boa, dado que é expressivamente menor que a altura máxima, se aproximando bem mais da mínima
 
 -
 
-Memory consumption in bytes for N = 100_000:
+Resultados de tempo de execução (em segundos) para os algoritmos de caminhamento (versões recursivas e não-recursivas) para N = 10^7.
 
-sieve_josefo_1:	bytes allocated = -
-sieve_josefo_2:	bytes allocated = -
-
--
-
-Running time (in sec.)
-
-M 10
-N	        10^3	10^4	10^5	10^6	10^7	10^8	10^9	10^10
-josefo_1	0.002; 0.258; 32.182; - ; - ; - ; - ; - ; - ; -
-josefo_2    0.000; 0.001; 0.017; 0.300; 3.514 ; 34.945 ; - ; - ; - ; - 
+Type        Rec     Iter
+Pre-order   
+In-order    
+Post-order
