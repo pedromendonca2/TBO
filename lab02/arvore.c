@@ -7,18 +7,39 @@ struct arvore{
 };
 
 void rec_preorder(tArvore* t, void (*visit)(tArvore*)){
-
     if(t == NULL) return;
 
     visit(t);
-    
     rec_preorder(t->esq, visit);
     rec_preorder(t->dir, visit);
 }
 
-void rec_postorder(tArvore* t, void (*visit)(tArvore*));
+void rec_postorder(tArvore* t, void (*visit)(tArvore*)){
+    if(t == NULL) return;
 
-void rec_inorder(tArvore* t, void (*visit)(tArvore*));
+    rec_postorder(t->esq, visit);
+    rec_postorder(t->dir, visit);
+    visit(t);
+}
+
+void rec_inorder(tArvore* t, void (*visit)(tArvore*)){
+    if(t == NULL) return;
+
+    rec_inorder(t->esq, visit);
+    visit(t);
+    rec_inorder(t->dir, visit);
+}
+
+void iterative_preorder(tArvore* t, void (*visit)(tArvore*), tStack* s){
+    if(t == NULL) return;
+
+    push(s, t);
+
+    while(isEmpty(s) == 0){
+        tArvore* node = pop(s);
+        
+    }
+}
 
 tArvore* criaVazia(){
     return NULL;
@@ -79,4 +100,8 @@ void imprime(tArvore* a){
         printf("%d\n", a->num);
         imprime(a->dir);
     }
+}
+
+int getNum(tArvore* a){
+    return a->num;
 }
