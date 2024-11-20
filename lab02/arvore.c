@@ -1,4 +1,5 @@
 #include "arvore.h"
+#include "pilha.h"
 
 struct arvore{
     tArvore* esq;
@@ -37,7 +38,28 @@ void iterative_preorder(tArvore* t, void (*visit)(tArvore*), tStack* s){
 
     while(isEmpty(s) == 0){
         tArvore* node = pop(s);
-        
+        visit(node);
+        if(node->dir != NULL) push(s, node->dir);
+        if(node->esq != NULL) push(s, node->esq);
+    }
+}
+
+void iterative_postorder(tArvore* t, void (*visit)(tArvore*), tStack* s);
+
+void iterative_inorder(tArvore* t, void (*visit)(tArvore*), tStack* s){
+    if(t == NULL) return;
+
+    tArvore* node = t;
+
+    while(isEmpty(s) == 0 || node != NULL){
+        if(node != NULL){
+            push(s, node);
+            node = node->esq;
+        } else{
+            node = pop(s);
+            visit(node);
+            node = node->dir;
+        }
     }
 }
 

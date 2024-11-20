@@ -1,4 +1,5 @@
 #include "arvore.h"
+#include "pilha.h"
 
 void read(tArvore* t){
     printf("Chave: %d\n", getNum(t));
@@ -9,8 +10,7 @@ int main(int args, char* argv[]){
     int N = atoi(argv[1]);
 
     tArvore* a = criaVazia();
-    tStack* stack = malloc(sizeof(tStack));
-    initStack(stack);
+    tStack* stack = initStack();
 
     srand(time(NULL));
 
@@ -25,12 +25,19 @@ int main(int args, char* argv[]){
     printf("Altura: %d\n", altura(a));
     printf("\n");
 
-    rec_preorder(a, read);
+    // rec_preorder(a, read);
+    // printf("\n");
+    // rec_postorder(a, read);
+    // printf("\n");
+    // rec_inorder(a, read);
+
+    //iterative_preorder(a, read, stack);
+    //printf("\n");
+    // iterative_postorder(a, read, stack);
     printf("\n");
-    rec_postorder(a, read);
-    printf("\n");
-    rec_inorder(a, read);
+    iterative_inorder(a, read, stack);
     
+    free(stack);
     destroi(a);
 
     return 0;

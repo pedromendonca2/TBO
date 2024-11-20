@@ -1,12 +1,16 @@
 #include "pilha.h"
+#include "arvore.h"
 
 struct stack{
     tArvore* array[MAX_SIZE];
     int top;
 };
 
-void initStack(tStack* stack){
-    stack->top = -1;
+tStack* initStack(){
+    tStack* s = malloc(sizeof(tStack));
+    s->top = -1;
+
+    return s;
 }
 
 void push(tStack* stack, tArvore* element){
@@ -25,7 +29,7 @@ tArvore* pop(tStack* stack){
         return 0;
     }
 
-    int element = stack->array[stack->top];
+    tArvore* element = stack->array[stack->top];
     stack->top--;
     return element;
 }
@@ -42,8 +46,6 @@ int isEmpty(tStack* stack){
 // }
 
 // void liberaArray(tStack* stack){
-//     for (int j = stack->top; j >= 0; j--) {
-//         free(stack->array[j]);
-//     }
+//     free(stack->array);
 //     free(stack);
 // }

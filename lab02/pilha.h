@@ -1,16 +1,16 @@
 #ifndef PILHA_H
-#define FILE_H
+#define PILHA_H
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "arvore.h"
 
 #define MAX_SIZE 30
 
 typedef struct stack tStack;
+typedef struct arvore tArvore;
 
-void initStack(tStack* stack);
+tStack* initStack();
 
 void push(tStack* stack, tArvore* element);
 
