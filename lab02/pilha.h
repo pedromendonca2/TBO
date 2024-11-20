@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define MAX_SIZE 30
+#define MAX_SIZE 10000000
 
 typedef struct stack tStack;
 typedef struct arvore tArvore;
@@ -17,6 +17,8 @@ void push(tStack* stack, tArvore* element);
 tArvore* pop(tStack* stack);
 
 int isEmpty(tStack* stack);
+
+tArvore* peek(tStack* stack);
 
 // void display(tStack* stack, void (*printElement)(void*));
 

@@ -39,6 +39,10 @@ int isEmpty(tStack* stack){
     return 0;
 }
 
+tArvore* peek(tStack* stack){
+    return stack->array[stack->top];
+}
+
 // void display(tStack* stack, void (*printElement)(void*)){
 //     for(int i=stack->top; i>=0; i--){
 //         printElement(stack->array[i]);

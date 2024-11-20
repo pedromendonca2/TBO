@@ -44,7 +44,27 @@ void iterative_preorder(tArvore* t, void (*visit)(tArvore*), tStack* s){
     }
 }
 
-void iterative_postorder(tArvore* t, void (*visit)(tArvore*), tStack* s);
+void iterative_postorder(tArvore* t, void (*visit)(tArvore*), tStack* s){
+    if(t == NULL) return;
+
+    tArvore* lastNodeVisited = NULL;
+    tArvore* node = t;
+
+    while(isEmpty(s) == 0 || node != NULL){
+        if(node != NULL){ //vai acrescentando a pilha ate nao ter como mais ir à erq da copoia da arv
+            push(s, node);
+            node = node->esq;
+        } else{
+            tArvore* peekNode = peek(s);
+            if(peekNode->dir != NULL && lastNodeVisited != peekNode->dir){ //vai a direita o quanto der
+                node = peekNode->dir;
+            } else{ //visita e começa a remover da pilha
+                visit(peekNode);
+                lastNodeVisited = pop(s);
+            }
+        }
+    }
+}
 
 void iterative_inorder(tArvore* t, void (*visit)(tArvore*), tStack* s){
     if(t == NULL) return;
