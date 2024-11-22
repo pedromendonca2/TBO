@@ -16,17 +16,13 @@ STD     4,001
 2. A altura máxima (no caso da árvore degenerada) é N-1; já a altura mínima é log2(N)
 3. A média é boa, dado que é expressivamente menor que a altura máxima, se aproximando bem mais da mínima
 
-
-O tempo que os caminhamentos recursivo e não recursivo levam para rodar é virtualmente o mesmo: 
-
-Elapsed time with non-recursive traversal: 169.686
-Elapsed time with recursive traversal: 167.981
-
 -
 
 Resultados de tempo de execução (em segundos) para os algoritmos de caminhamento (versões recursivas e não-recursivas) para N = 10^7.
 
 Type        Rec     Iter
-Pre-order   
-In-order    
-Post-order
+Pre-order   60.470  59.200
+In-order    62.253  57.383
+Post-order  61.500  58.004
+
+Ou seja, o tempo que os caminhamentos recursivo e não recursivo levam para rodar é virtualmente o mesmo.

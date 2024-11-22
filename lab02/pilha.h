@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define MAX_SIZE 10000000
+#define MAX_SIZE 100
 
 typedef struct stack tStack;
 typedef struct arvore tArvore;

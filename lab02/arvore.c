@@ -1,5 +1,6 @@
 #include "arvore.h"
 #include "pilha.h"
+#include "fila.h"
 
 struct arvore{
     tArvore* esq;

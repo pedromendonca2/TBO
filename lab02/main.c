@@ -1,5 +1,6 @@
 #include "arvore.h"
 #include "pilha.h"
+#include "fila.h"
 
 void read(tArvore* t){
     printf("Chave: %d\n", getNum(t));
@@ -29,26 +30,47 @@ int main(int args, char* argv[]){
 
     start = clock();
     rec_preorder(a, read);
-    printf("\n");
-    rec_postorder(a, read);
-    printf("\n");
-    rec_inorder(a, read);
     stop = clock();
 
     double time_taken_1 = ((double) stop - start) / CLOCKS_PER_SEC;
+    
+    printf("\n");
+    start = clock();
+    rec_inorder(a, read);
+    stop = clock();
+
+    double time_taken_2 = ((double) stop - start) / CLOCKS_PER_SEC;
+
+    printf("\n");
+    start = clock();
+    rec_postorder(a, read);
+    stop = clock();
+
+    double time_taken_3 = ((double) stop - start) / CLOCKS_PER_SEC;
 
     ///
 
     start = clock();
     iterative_preorder(a, read, stack);
+    stop = clock();
+
+    double time_taken_4 = ((double) stop - start) / CLOCKS_PER_SEC;
+
     printf("\n");
-    iterative_postorder(a, read, stack);
-    printf("\n");
+    start = clock();
     iterative_inorder(a, read, stack);
     stop = clock();
 
-    double time_taken_2 = ((double) stop - start) / CLOCKS_PER_SEC;
-    printf("\nElapsed time with non-recursive traversal: %.3f\nElapsed time with recursive traversal: %.3f\n", time_taken_2, time_taken_1);
+    double time_taken_5 = ((double) stop - start) / CLOCKS_PER_SEC;
+
+    printf("\n");
+    start = clock();
+    iterative_postorder(a, read, stack);
+    stop = clock();
+
+    double time_taken_6 = ((double) stop - start) / CLOCKS_PER_SEC;
+
+    printf("\nElapsed time with recursive traversal (pre): %.3f\nElapsed time with recursive traversal(in): %.3f\nElapsed time with recursive traversal (post): %.3f\nElapsed time with non-recursive traversal (pre): %.3f\nElapsed time with non-recursive traversal (in): %.3f\nElapsed time with non-recursive traversal (post): %.3f\n", time_taken_1, time_taken_2, time_taken_3, time_taken_4, time_taken_5, time_taken_6);
     
     free(stack);
     destroi(a);
