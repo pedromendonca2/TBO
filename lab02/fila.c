@@ -8,12 +8,12 @@ struct queue{
     int numItems;
 };
 
-int isFull(tQueue* queue){
+int isQueueFull(tQueue* queue){
     if(queue->numItems == MAX_SIZE) return 1;
     return 0;
 }
 
-int isEmpty(tQueue* queue){
+int isQueueEmpty(tQueue* queue){
     if(queue->numItems == 0) return 1;
     return 0;
 }
@@ -31,7 +31,7 @@ tQueue* initQueue(){
 void insert(tQueue* queue, tArvore* element){
     //if(queue->last == MAX_SIZE-1) queue->last = -1;
 
-    if(isFull(queue)){
+    if(isQueueFull(queue)){
         printf("Tá cheia mano\n");
         return;
     }
@@ -42,8 +42,8 @@ void insert(tQueue* queue, tArvore* element){
     queue->numItems++;
 }
 
-tArvore* remove(tQueue* queue){
-    if(isEmpty(queue)){
+void withdraw(tQueue* queue){
+    if(isQueueEmpty(queue)){
         printf("Tá vazia mano\n");
         return;
     }
@@ -53,5 +53,9 @@ tArvore* remove(tQueue* queue){
     queue->first++;
     queue->numItems--;
 
-    return node;
+    //return node;
+}
+
+tArvore* front(tQueue* queue){
+    return queue->nodes[queue->first];
 }

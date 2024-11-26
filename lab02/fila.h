@@ -10,12 +10,16 @@
 typedef struct queue tQueue;
 typedef struct arvore tArvore;
 
+int isQueueFull(tQueue* queue);
+
+int isQueueEmpty(tQueue* queue);
+
 tQueue* initQueue();
 
 void insert(tQueue* queue, tArvore* element);
 
-tArvore* remove(tQueue* queue);
+void withdraw(tQueue* queue);
 
-int isEmpty(tQueue* queue);
+tArvore* front(tQueue* queue);
 
 #endif

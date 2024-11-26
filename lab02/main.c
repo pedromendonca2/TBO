@@ -12,6 +12,7 @@ int main(int args, char* argv[]){
 
     tArvore* a = criaVazia();
     tStack* stack = initStack();
+    tQueue* queue = initQueue();
 
     srand(time(NULL));
 
@@ -21,10 +22,11 @@ int main(int args, char* argv[]){
         a = insereChave(a, r);
     }
 
-    //printf("\n\n");
-    //imprime(a);
-    // printf("Altura: %d\n", altura(a));
-    // printf("\n");
+    printf("Level Order:\n\n");
+    leverOrder(a, read, queue);
+
+    printf("\n");
+    printf("Altura: %d\n\n", altura(a));
 
     clock_t start, stop;
 
@@ -48,8 +50,7 @@ int main(int args, char* argv[]){
 
     double time_taken_3 = ((double) stop - start) / CLOCKS_PER_SEC;
 
-    ///
-
+    printf("\n");
     start = clock();
     iterative_preorder(a, read, stack);
     stop = clock();
@@ -72,6 +73,7 @@ int main(int args, char* argv[]){
 
     printf("\nElapsed time with recursive traversal (pre): %.3f\nElapsed time with recursive traversal(in): %.3f\nElapsed time with recursive traversal (post): %.3f\nElapsed time with non-recursive traversal (pre): %.3f\nElapsed time with non-recursive traversal (in): %.3f\nElapsed time with non-recursive traversal (post): %.3f\n", time_taken_1, time_taken_2, time_taken_3, time_taken_4, time_taken_5, time_taken_6);
     
+    free(queue);
     free(stack);
     destroi(a);
 

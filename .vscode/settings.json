@@ -3,6 +3,7 @@
         "erastotenes.h": "c",
         "stdbool.h": "c",
         "josefo_1.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "arvore.h": "c"
     }
 }

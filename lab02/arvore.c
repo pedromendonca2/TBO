@@ -84,6 +84,21 @@ void iterative_inorder(tArvore* t, void (*visit)(tArvore*), tStack* s){
     }
 }
 
+void leverOrder(tArvore* t, void (*visit)(tArvore*), tQueue* q){ 
+    if(t == NULL) return;
+    
+    insert(q, t);
+
+    while(!isQueueEmpty(q)){
+        tArvore* node = front(q);
+        visit(node);
+        withdraw(q);
+        if(node->esq != NULL) insert(q, node->esq);
+        if(node->dir != NULL) insert(q, node->dir);
+    }
+
+}
+
 tArvore* criaVazia(){
     return NULL;
 }
