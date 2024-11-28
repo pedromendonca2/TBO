@@ -15,6 +15,8 @@ int main(int argc, char *argv[])
 
     int N = atoi(argv[1]);
 
+    srand(time(NULL));
+
     Item *array = malloc(N*sizeof(int));
     if (array == NULL) {
         printf("Erro de alocação de memória\n");
@@ -25,13 +27,20 @@ int main(int argc, char *argv[])
         scanf("%d", &array[i]);
     }
 
-    // Sort
-    sort(array, 0, N-1);
+    clock_t start, stop;
+
+    start = clock();
+    sort(array, 0, N); // Sort
+    stop = clock();
+
+    double time_taken_1 = ((double) stop - start) / CLOCKS_PER_SEC;
+    printf("\nElapsed time: %.3f\n", time_taken_1);
 
     // Output
     for(int i=0; i<N; i++){
-        printf("%d", array[i]);
+        printf("%d ", array[i]);
     }
+    printf("\n");
 
     free(array);
 }

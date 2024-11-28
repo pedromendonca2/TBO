@@ -4,6 +4,8 @@
         "stdbool.h": "c",
         "josefo_1.h": "c",
         "stdio.h": "c",
-        "arvore.h": "c"
+        "arvore.h": "c",
+        "stdlib.h": "c",
+        "item.h": "c"
     }
 }
