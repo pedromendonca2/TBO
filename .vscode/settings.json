@@ -6,6 +6,10 @@
         "stdio.h": "c",
         "arvore.h": "c",
         "stdlib.h": "c",
-        "item.h": "c"
+        "item.h": "c",
+        "compare": "c",
+        "limits": "c",
+        "*.tcc": "c",
+        "type_traits": "c"
     }
 }
