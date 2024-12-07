@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "canvas.h"
 #include "colsys.h"
 
@@ -6,6 +7,7 @@
 #define GUI 0                // Modifique para 0 se não quiser a janela.
 
 int main(int argc, char* argv[]) {
+
     system_init(atoi(argv[1]), MAX_SIM_TIME, GUI);
 
     if (argc == 3) {
