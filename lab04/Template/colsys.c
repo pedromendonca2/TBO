@@ -148,7 +148,6 @@ void predict(Particle *p) {
         Event* e = create_event(time, NULL, p);
         PQ_insert(pq, e);
     }
-
 }
 
 /*
@@ -193,15 +192,18 @@ void simulate() {
     //       o limite de tempo (variável global 'limit').
 
     while(!PQ_is_empty(pq) && t<=limit){
-        printf("Verificação 1\n");
+
+        //printf("Verificação 1\n");
         Event* e = PQ_delmin(pq);
+        //if(e == NULL) printf("era nulo seu safado\n");
 
         // - Retire o primeiro evento da fila. Se ele não for válido descarte-o.
         //   (Lembre de liberar a memória do evento.)
         if(is_valid(e) == false){
+            //printf("Invalido\n");
             destroy_event(e);   
         } else{
-            printf("Verificação\n");
+            //printf("Verificação\n");
 
             // - Se o evento for válido, avançe o tempo da simulação para o tempo do
             //   evento. Percorra todo o vetor de partículas atualizando a posição das
@@ -209,10 +211,10 @@ void simulate() {
             //   função é a diferença de tempo entre o valor de 't' antigo e o tempo
             //   do evento.
             for(int i=0; i<N; i++){
-                move_particle(particles[i], (get_time(e) -  t));
+                move_particle(particles[i], (t - get_time(e)));
             }
 
-            printf("Verificação\n");
+            //printf("Verificação\n");
 
             // - Processe o evento. (Veja os tipos de eventos no comentário da
             //   função 'create_event' em 'event.h'.) Utilize as funções 'bounce_off'
@@ -221,17 +223,17 @@ void simulate() {
             Particle* a = get_A(e);
             Particle* b = get_B(e);
 
-            if(a != NULL && b != NULL) printf("Nenhuma nula\n");
-            else if(a != NULL && b == NULL) printf("B nula\n");
-            else if(a == NULL && b != NULL) printf("A nula\n");
-            else printf("Todas nulas\n");
+            // if(a != NULL && b != NULL) printf("Nenhuma nula\n");
+            // else if(a != NULL && b == NULL) printf("B nula\n");
+            // else if(a == NULL && b != NULL) printf("A nula\n");
+            // else printf("Todas nulas\n");
 
             if(a != NULL && b != NULL) bounce_off(a, b);
             else if(a != NULL && b == NULL) bounce_off_vertical_wall(a);
             else if(a == NULL && b != NULL) bounce_off_horizontal_wall(b);
             else redraw();
 
-            printf("Verificação\n");
+            //printf("Verificação\n");
 
             // - Por fim, atualize a fila com as novas colisões envolvendo as
             //   partículas do evento, chamando a função predict() com os argumentos
@@ -240,7 +242,7 @@ void simulate() {
             predict(a);
             predict(b);
 
-            printf("Verificação\n");
+            destroy_event(e);
         }
     }
 

@@ -25,12 +25,18 @@ struct pq{
     int max;
 };
 
-void exch(Event* e1, Event* e2){
-    //aux recebe e1, e1 recebe e2, e2 recebe aux
+// void exch(Event* e1, Event* e2){
+//     //aux recebe e1, e1 recebe e2, e2 recebe aux
 
-    Event* aux = e1;
-    e1 = e2;
-    e2 = aux;
+//     Event* aux = e1;
+//     e1 = e2;
+//     e2 = aux;
+// }
+
+void exch(Event** e1, Event** e2) {
+    Event* aux = *e1;
+    *e1 = *e2;
+    *e2 = aux;
 }
 
 bool greater(Event* e1, Event* e2) {
@@ -39,7 +45,7 @@ bool greater(Event* e1, Event* e2) {
 
 void fix_up(PQ *pq, int k) { 
     while (k > 1 && greater(pq->items[k / 2], pq->items[k])) {
-        exch(pq->items[k], pq->items[k / 2]);
+        exch(&pq->items[k], &pq->items[k / 2]);
         k = k / 2;
     }
 }
@@ -53,7 +59,7 @@ void fix_down(PQ *pq, int k) {
         if (!greater(pq->items[k], pq->items[j])) {
             break;
         }
-        exch(pq->items[k], pq->items[j]);
+        exch(&pq->items[k], &pq->items[j]);
         k = j;
     }
 }
@@ -120,9 +126,9 @@ Event* PQ_delmin(PQ *pq) {
     // TODO: Implemente essa função que remove o evento com o menor tempo da
     //       fila e o retorna.
 
-    if (PQ_is_empty(pq)) return NULL;
+    if(PQ_is_empty(pq) || pq->size < 1) return NULL;
     Event* min = pq->items[1];
-    exch(pq->items[1], pq->items[pq->size]);
+    exch(&pq->items[1], &pq->items[pq->size]);
     pq->size--;
     fix_down(pq, 1);
     return min;
