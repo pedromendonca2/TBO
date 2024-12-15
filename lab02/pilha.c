@@ -42,14 +42,3 @@ int isEmpty(tStack* stack){
 tArvore* peek(tStack* stack){
     return stack->array[stack->top];
 }
-
-// void display(tStack* stack, void (*printElement)(void*)){
-//     for(int i=stack->top; i>=0; i--){
-//         printElement(stack->array[i]);
-//     }
-// }
-
-// void liberaArray(tStack* stack){
-//     free(stack->array);
-//     free(stack);
-// }
