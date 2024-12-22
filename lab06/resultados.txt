@@ -1,0 +1,147 @@
+Resultados para quick_1:
+nearly_sorted/100000.txt: 4.817446 segundos
+nearly_sorted/1000000.txt: Timeout após 30 segundos
+nearly_sorted/10000000.txt: Timeout após 30 segundos
+reverse_sorted/100000.txt: 8.002476 segundos
+reverse_sorted/1000000.txt: Timeout após 30 segundos
+reverse_sorted/10000000.txt: Timeout após 30 segundos
+sorted/100000.txt: 6.030218 segundos
+sorted/1000000.txt: Timeout após 30 segundos
+sorted/10000000.txt: Timeout após 30 segundos
+unif_rand/100000.txt: 0.010800 segundos
+unif_rand/1000000.txt: 0.120389 segundos
+unif_rand/10000000.txt: 1.429971 segundos
+
+Resultados para quick_2:
+nearly_sorted/100000.txt: 4.740672 segundos
+nearly_sorted/1000000.txt: Timeout após 30 segundos
+nearly_sorted/10000000.txt: Timeout após 30 segundos
+reverse_sorted/100000.txt: 8.065721 segundos
+reverse_sorted/1000000.txt: Timeout após 30 segundos
+reverse_sorted/10000000.txt: Timeout após 30 segundos
+sorted/100000.txt: 5.528881 segundos
+sorted/1000000.txt: Timeout após 30 segundos
+sorted/10000000.txt: Timeout após 30 segundos
+unif_rand/100000.txt: 0.009098 segundos
+unif_rand/1000000.txt: 0.108080 segundos
+unif_rand/10000000.txt: 1.285151 segundos
+
+Resultados para quick_3:
+nearly_sorted/100000.txt: 4.848977 segundos
+nearly_sorted/1000000.txt: Timeout após 30 segundos
+nearly_sorted/10000000.txt: Timeout após 30 segundos
+reverse_sorted/100000.txt: 0.003845 segundos
+reverse_sorted/1000000.txt: 0.044148 segundos
+reverse_sorted/10000000.txt: 0.521137 segundos
+sorted/100000.txt: 5.596175 segundos
+sorted/1000000.txt: Timeout após 30 segundos
+sorted/10000000.txt: Timeout após 30 segundos
+unif_rand/100000.txt: 0.010316 segundos
+unif_rand/1000000.txt: 0.133057 segundos
+unif_rand/10000000.txt: 1.411692 segundos
+
+Resultados para quick_4:
+nearly_sorted/100000.txt: 4.995420 segundos
+nearly_sorted/1000000.txt: Timeout após 30 segundos
+nearly_sorted/10000000.txt: Timeout após 30 segundos
+reverse_sorted/100000.txt: 0.002890 segundos
+reverse_sorted/1000000.txt: 0.034666 segundos
+reverse_sorted/10000000.txt: 0.393322 segundos
+sorted/100000.txt: 5.795328 segundos
+sorted/1000000.txt: Timeout após 30 segundos
+sorted/10000000.txt: Timeout após 30 segundos
+unif_rand/100000.txt: 0.008814 segundos
+unif_rand/1000000.txt: 0.107513 segundos
+unif_rand/10000000.txt: 1.287733 segundos
+
+Resultados para quick_5:
+nearly_sorted/100000.txt: 4.729190 segundos
+nearly_sorted/1000000.txt: Timeout após 30 segundos
+nearly_sorted/10000000.txt: Timeout após 30 segundos
+reverse_sorted/100000.txt: 7.769777 segundos
+reverse_sorted/1000000.txt: Timeout após 30 segundos
+reverse_sorted/10000000.txt: Timeout após 30 segundos
+sorted/100000.txt: 6.544152 segundos
+sorted/1000000.txt: Timeout após 30 segundos
+sorted/10000000.txt: Timeout após 30 segundos
+unif_rand/100000.txt: 0.011296 segundos
+unif_rand/1000000.txt: 0.133368 segundos
+unif_rand/10000000.txt: 1.489623 segundos
+
+Resultados para quick_6:
+nearly_sorted/100000.txt: 4.847522 segundos
+nearly_sorted/1000000.txt: Timeout após 30 segundos
+nearly_sorted/10000000.txt: Timeout após 30 segundos
+reverse_sorted/100000.txt: 0.003145 segundos
+reverse_sorted/1000000.txt: 0.036142 segundos
+reverse_sorted/10000000.txt: 0.412861 segundos
+sorted/100000.txt: 5.204977 segundos
+sorted/1000000.txt: Timeout após 30 segundos
+sorted/10000000.txt: Timeout após 30 segundos
+unif_rand/100000.txt: 0.009341 segundos
+unif_rand/1000000.txt: 0.108916 segundos
+unif_rand/10000000.txt: 1.289214 segundos
+
+Resultados para quick_7:
+nearly_sorted/100000.txt: 0.010056 segundos
+nearly_sorted/1000000.txt: 0.125747 segundos
+nearly_sorted/10000000.txt: 1.832861 segundos
+reverse_sorted/100000.txt: 0.009996 segundos
+reverse_sorted/1000000.txt: 0.129063 segundos
+reverse_sorted/10000000.txt: 1.811509 segundos
+sorted/100000.txt: 0.010008 segundos
+sorted/1000000.txt: 0.133970 segundos
+sorted/10000000.txt: 1.816694 segundos
+unif_rand/100000.txt: 0.010129 segundos
+unif_rand/1000000.txt: 0.127485 segundos
+unif_rand/10000000.txt: 1.977715 segundos
+
+Versão 1: Quick Sort clássico top-down recursivo sem nenhuma otimização.
+Desempenho: Menor eficiência para grandes volumes de dados ou dados desordenados, pois depende exclusivamente da recursividade, o que pode levar a chamadas profundas e repetidas.
+
+Versão 2: Quick Sort top-down recursivo com cut-off para insertion sort.
+Desempenho: Melhora a eficiência para subarranjos pequenos ou quase ordenados ao substituir Quick Sort por Insertion Sort em pequenas partes.
+
+Versão 3: Quick Sort top-down recursivo com mediana de 3.
+Desempenho: Melhor que a Versão 1, pois utiliza a mediana de 3 para melhorar o balanceamento dos pivôs, evitando problemas de pivôs ruins.
+
+Versão 4: Fusão das versões 2 e 3 (cut-off e mediana de 3).
+Desempenho: Combinando cut-off e mediana de 3, essa versão oferece melhor balanceamento e eficiência tanto para subarranjos pequenos quanto para pivôs mais equilibrados, resultando em uma ótima combinação.
+
+Versão 5: Quick Sort bottom-up sem nenhuma otimização.
+Desempenho: Reduz a sobrecarga de recursividade, mas pode ser menos eficiente em entradas desordenadas profundas devido ao uso repetido de pilhas e menos balanceamento dinâmico.
+
+Versão 6: Alterada para incluir cut-off e mediana de 3 no bottom-up.
+Desempenho: Similar à Versão 4, mas com abordagem bottom-up, mantendo boas otimizações. Pode ser mais eficiente para subarranjos pequenos e casos onde o uso de recursividade é evitado.
+
+Versão 7: Versão 4 com shuffle.
+Desempenho: Adiciona shuffle, o que pode afetar negativamente o desempenho ao introduzir operações adicionais desnecessárias como trocas e comparações. O shuffle pode prejudicar o desempenho em situações onde Quick Sort seria eficiente sem aleatoriedade excessiva.
+
+Análise:
+Versões 4 e 6 se destacam devido às suas otimizações: cut-off para lidar com subarranjos pequenos e a mediana de 3 para melhorar o balanceamento.
+Versão 4 é a mais equilibrada, pois combina ambas as otimizações, fornecendo o melhor desempenho em termos de eficiência em uma ampla gama de casos.
+Versão 7 é menos utilizada na prática porque o shuffle adiciona complexidade extra, o que pode ser contraproducente em muitas situações, especialmente quando o Quick Sort já possui boas otimizações para balanceamento e pequenos subarranjos.
+
+Escolha ideal:
+A Versão 4 seria a escolha mais recomendada, pois combina os benefícios de cut-off e mediana de 3, resultando em uma implementação robusta e eficiente que atende bem tanto a subarranjos pequenos quanto a grandes conjuntos desordenados.
+
+10M_const_keys_sorted.txt
+
+quick_4: 11.222175
+quick_8: Timeout após 30 segundos
+merge_4: 0.026640
+
+10M_const_keys_unif_rand.txt
+
+quick_4: 0.694858
+quick_8: Timeout após 30 segundos
+merge_4: 1.337264
+
+Os resultados mostram que o melhor algoritmo é relativo à amostra. O merge sendo melhor para vetores ordenados 
+e o quick para aleatórios.
+
+O quicksort com 3-way partitioning é ideal para casos com alta repetição de elementos, 
+mas seu overhead o torna menos eficiente para distribuições mais uniformes ou com baixa repetição, 
+especialmente quando combinado com valores de intervalo pequeno, pois cria partições de tamanho desbalanceado. 
+Por outro lado, o quicksort normal com median-of-three e cut-off é mais robusto para diversos 
+tipos de entrada, compensando sua lógica mais simples com maior eficiência em casos gerais.

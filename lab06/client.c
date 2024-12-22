@@ -41,7 +41,14 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    for (int i = 0; i < N; i++) fscanf(file, "%d\n", &array[i]);
+    for (int i = 0; i < N; i++){
+        if (fscanf(file, "%d\n", &array[i]) != 1) {
+            printf("Erro ao ler o elemento %d do arquivo %s.\n", i, caminho);
+            free(array);
+            fclose(file);
+            return 1;
+        }
+    }
 
     fclose(file);
 
