@@ -1,0 +1,4 @@
+Memory consumption in bytes for N = 100_000:
+sieve_int	400_000
+sieve_bool	100_000
+sieve_bit	 12_501

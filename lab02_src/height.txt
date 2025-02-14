@@ -1,0 +1,28 @@
+ITER    HEIGHT
+0       50
+1       46
+2       50
+3       49
+4       48
+5       52
+6       51
+7       46
+8       55
+9       47
+AVG     49.4
+STD     2.837
+
+Respostas:
+
+1) O desvio padrão é pequeno quando comparado com a média. Isso indica que é
+bastante provável que a altura da árvore sempre fique próxima a 49. Claro que
+para podermos afirmar isso com certeza é necessário realizar mais experimentos
+para tornar os resultados mais estatisticamente significantes.
+
+2) A altura máxima de uma BST é N-1 (árvore degenerada) e a mínima é lg N
+(árvore totalmente balanceada).
+
+3) Temos que lg 10^6 ~= 19.93. A média encontrada experimentalmente é cerca de
+2.5 esse valor. Claro que não é o ideal mas considerando que a altura máxima
+seria 10^6, esse artifício simples que foi usado deixou a árvore razoavelmente
+balanceada.

@@ -1,0 +1,35 @@
+Running time (in sec.) vs. sorting algorithm
+
+RANDOM NUMBERS
+N       1K      10K     100K
+select  0.006   0.171   16.626
+insert  0.003   0.084    7.905
+bubble  0.008   0.344   38.592
+shaker  0.007   0.270   27.557
+
+SORTED
+N       1K      10K     100K
+select  0.005   0.170   16.606
+insert  0.000   0.000    0.000
+bubble  0.000   0.000    0.000
+shaker  0.000   0.000    0.000
+
+REVERSE SORTED
+N       1K      10K     100K
+select  0.005   0.162   15.612
+insert  0.005   0.161   15.839
+bubble  0.008   0.312   30.479
+shaker  0.010   0.321   30.822
+
+NEARLY SORTED
+N       1K      10K     100K
+select  0.005   0.169   16.653
+insert  0.000   0.000    0.001
+bubble  0.000   0.001    0.002
+shaker  0.000   0.000    0.001
+
+Algumas conclusões possíveis das tabelas acima:
+- O tempo de execução do selection sort não é influenciado pela entrada.
+- Todos os algoritmos têm desempenho ruim quando a entrada está invertida.
+- Insertion sort sempre têm desempenho igual ou melhor que os demais algoritmos
+  para as variações testadas.

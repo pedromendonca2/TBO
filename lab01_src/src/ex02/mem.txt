@@ -1,0 +1,3 @@
+Memory consumption in bytes for N = 1_000:
+list	16_000
+array	 8_000

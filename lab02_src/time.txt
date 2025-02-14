@@ -1,0 +1,17 @@
+Resultados de tempo de execução (em segundos) para os algoritmos de caminhamento
+(versões recursivas e não-recursivas) para N = 10^7.
+
+Type        Rec     Iter
+Pre-order   0.648   0.830
+In-order    0.678   1.177
+Post-order  0.692   1.302
+
+É interessante notar que as versões recursivas são mais rápidas.
+Antigamente, implementações recursivas em linguagens imperativas como C eram
+notoriamente mais lentas e, portanto, evitadas. Hoje em dia, a tecnologia de
+compiladores já avançou a tal ponto que recursividade não é mais um problema.
+
+Aqui fica uma lição importante: nunca assuma que alguma informação genérica
+obtida por aí (por exemplo, "recursão em C é ineficiente") é válida. Existem
+inúmeros fatores que influenciam o tempo de execução de um programa. Para ter
+certeza, implemente, teste e meça.
