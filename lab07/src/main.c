@@ -3,6 +3,7 @@
 #include <ctype.h>
 #include <string.h>
 #include "str.h"
+#include "msd.h"
 
 typedef struct {
     String *s;
@@ -10,9 +11,7 @@ typedef struct {
 } Suffix;
 
 void print_context(int index, int context, String* text, Suffix** suffixes, String* query){
-    //index fala onde o query tá no vetor de sufixos, agora eu preciso saber o index do proprio sufixo e me divertir
-
-    while(equals_substring(suffixes[index]->s, 0, suffixes[index]->s->len - 1, query)){
+    while(index < text->len && equals_substring(suffixes[index]->s, 0, suffixes[index]->s->len - 1, query)){
         int trueIndex = suffixes[index]->index;
         int start = trueIndex - context;
         int end = trueIndex + context + query->len;
@@ -98,17 +97,7 @@ String* process_file(char** query, const char *filename) {
 
     fgets(buffer, sizeof(buffer), file); // Consome a primeira linha
     fscanf(file, "%s", *query);
-
-    // size_t query_len = strlen(*query);
-    // while (query_len > 0 && isspace((*query)[query_len - 1])) {
-    //     (*query)[--query_len] = '\0';
-    // }
-    // while (isspace(**query)) {
-    //     (*query)++;
-    //     query_len--;
-    // }
-
-    (*query)[strlen(*query)] = '\0'; // É isso mesmo?
+    (*query)[strlen(*query)] = '\0';
     
     while (fgets(buffer, sizeof(buffer), file)) {
         for (int i = 0; buffer[i] != '\0'; i++) {
@@ -155,11 +144,6 @@ Suffix** construct_suffixes(String* s, FILE* f){
         suffixes[i]->s->len = s->len - i; // Comprimento do sufixo
     }
 
-    // for(int i=0; i<s->len; i++){
-    //     print_string_file(suffixes[i]->s, f);
-    //     fprintf(f, "\n");
-    // }
-
     return suffixes;
 }
 
@@ -177,24 +161,44 @@ int main(int argc, char *argv[]) {
     free(query_0);
 
     print_string(query);
-    //printf("processou\n");
+    printf("\n\n");
+
     int context = atoi(argv[3]);
     if (!processed_text) return 1;
 
-    //print_string(processed_text);
-    //printf("\n");
-
     Suffix** suffixes = construct_suffixes(processed_text, f_out);
 
-    qsort(suffixes, processed_text->len, sizeof(Suffix*), suffix_compare);
+    //qsort(suffixes, processed_text->len, sizeof(Suffix*), suffix_compare);
+    //for(int i=0; i<processed_text->len; i++) printf("%d\n", suffixes[i]->index);
 
-    //faz uma busca binária no array buscando a 1a aparição do query. Após isso, verifica todas as aparições posteriores, guardando o index de cada uma
+    String** substrings = malloc(processed_text->len*sizeof(String*));
+    for(int i=0; i<processed_text->len; i++){
+        substrings[i] = suffixes[i]->s;
+    }
+
+    printf("Calling sort with %d substrings\n", processed_text->len);
+    int* indexes = malloc(processed_text->len*sizeof(int));
+    for (int i = 0; i < processed_text->len; i++) indexes[i] = i; // Inicializa os índices
+    sort(substrings, processed_text->len, indexes);
+    printf("\n\n");
+    //printf("sort completed\n");
+    
+    // print_str_array(substrings, processed_text->len);
+    // printf("\n\n");
+
+    for(int i=0; i<processed_text->len; i++){
+        suffixes[i]->s = substrings[i];
+        suffixes[i]->index = indexes[i];
+
+        // print_string(suffixes[i]->s);
+        // printf("- %d\n", suffixes[i]->index);
+    }
+
+    free(substrings); free(indexes);
+    
     int first_ocurrance = binary_search(suffixes, query, 0, processed_text->len - 1);
     print_context(first_ocurrance, context, processed_text, suffixes, query);
-    //faz um while que verifica se se o sufixo começa com o query, se sim, imprime o que tem que imprimir
-    //printf("First ocurrance: %d\n", first_ocurrance);
-
-    //for(int i=375883; i<375890; i++) printf("%c", processed_text->c[i]);
+    printf("\n\n");
 
     destroy_suffixes(suffixes, processed_text->len);
     destroy_string(query);
