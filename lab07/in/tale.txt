@@ -1,19 +1,6 @@
 726570
 age
 
-11
-10
-7
-0
-3
-5
-8
-1
-4
-6
-9
-2
-
 it was the best of times it was the worst of times
 it was the age of wisdom it was the age of foolishness
 it was the epoch of belief it was the epoch of incredulity

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include <time.h>
 #include "str.h"
 #include "msd.h"
 
@@ -15,7 +16,6 @@ void print_context(int index, int context, String* text, Suffix** suffixes, Stri
         int trueIndex = suffixes[index]->index;
         int start = trueIndex - context;
         int end = trueIndex + context + query->len;
-        //printf("Length of query: %zu\n", strlen(query->c));
 
         if (start < 0) {
             start = 0;
@@ -132,7 +132,7 @@ String* process_file(char** query, const char *filename) {
     return result;
 }
 
-Suffix** construct_suffixes(String* s, FILE* f){
+Suffix** construct_suffixes(String* s){
     Suffix** suffixes = malloc(s->len*sizeof(Suffix*));
 
     for(int i=0; i<s->len; i++){ //índice do array
@@ -148,62 +148,64 @@ Suffix** construct_suffixes(String* s, FILE* f){
 }
 
 int main(int argc, char *argv[]) {
-    if (argc != 4) {
+    if (argc != 3) {
         fprintf(stderr, "Uso: %s <arquivo_de_entrada>\n", argv[0]);
         return 1;
     }
-    
-    FILE* f_out = fopen(argv[1], "w");
 
     char *query_0 = malloc(100 * sizeof(char));
-    String *processed_text = process_file(&query_0, argv[2]);
+    String *processed_text = process_file(&query_0, argv[1]);
     String *query = create_string(query_0);
     free(query_0);
 
-    print_string(query);
-    printf("\n\n");
-
-    int context = atoi(argv[3]);
+    int context = atoi(argv[2]);
     if (!processed_text) return 1;
 
-    Suffix** suffixes = construct_suffixes(processed_text, f_out);
+    Suffix** suffixes = construct_suffixes(processed_text);
 
-    //qsort(suffixes, processed_text->len, sizeof(Suffix*), suffix_compare);
-    //for(int i=0; i<processed_text->len; i++) printf("%d\n", suffixes[i]->index);
+    srand(time(NULL));
+    clock_t start, stop;
 
-    String** substrings = malloc(processed_text->len*sizeof(String*));
-    for(int i=0; i<processed_text->len; i++){
-        substrings[i] = suffixes[i]->s;
-    }
+    start = clock();
+    qsort(suffixes, processed_text->len, sizeof(Suffix*), suffix_compare);
+    stop = clock();
 
-    printf("Calling sort with %d substrings\n", processed_text->len);
-    int* indexes = malloc(processed_text->len*sizeof(int));
-    for (int i = 0; i < processed_text->len; i++) indexes[i] = i; // Inicializa os índices
-    sort(substrings, processed_text->len, indexes);
-    printf("\n\n");
-    //printf("sort completed\n");
-    
-    // print_str_array(substrings, processed_text->len);
-    // printf("\n\n");
+    double time_taken = ((double)(stop - start)) / CLOCKS_PER_SEC;
+    printf("%.6f\n\n", time_taken);
 
-    for(int i=0; i<processed_text->len; i++){
-        suffixes[i]->s = substrings[i];
-        suffixes[i]->index = indexes[i];
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        // print_string(suffixes[i]->s);
-        // printf("- %d\n", suffixes[i]->index);
-    }
+    // String** substrings = malloc(processed_text->len*sizeof(String*));
+    // for(int i=0; i<processed_text->len; i++){
+    //     substrings[i] = suffixes[i]->s;
+    // }
 
-    free(substrings); free(indexes);
+    // int* indexes = malloc(processed_text->len*sizeof(int));
+    // for (int i = 0; i < processed_text->len; i++) indexes[i] = i; // Inicializa os índices
+
+    // srand(time(NULL));
+    // clock_t start, stop;
+
+    // start = clock();
+    // sort(substrings, processed_text->len, indexes);
+    // stop = clock();
+
+    // double time_taken = ((double)(stop - start)) / CLOCKS_PER_SEC;
+    // printf("%.6f\n\n", time_taken);
+
+    // for(int i=0; i<processed_text->len; i++){
+    //     suffixes[i]->s = substrings[i];
+    //     suffixes[i]->index = indexes[i];
+    // }
+
+    // free(substrings); free(indexes);
     
     int first_ocurrance = binary_search(suffixes, query, 0, processed_text->len - 1);
     print_context(first_ocurrance, context, processed_text, suffixes, query);
-    printf("\n\n");
 
     destroy_suffixes(suffixes, processed_text->len);
     destroy_string(query);
     destroy_string(processed_text);
 
-    fclose(f_out);
     return 0;
 }

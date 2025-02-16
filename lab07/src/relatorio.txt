@@ -1,0 +1,11 @@
+Para o arquivo moby.txt, com o query "coffin" e contexto 15, 
+time_taken do qsort é igual a 0.677681 e do sort é igual a 0.962675, sem CUTOFF,
+e igual a 0.250942 COM CUTOFF com valor 15 para insertion sort
+
+O MSD Radix Sort é melhor que qsort porque evita comparações desnecessárias ao ordenar strings caracter por caracter, 
+explorando prefixos comuns. Enquanto qsort tem O(N log N) e compara strings inteiras repetidamente, o MSD Radix Sort pode ser O(N) no melhor caso, 
+processando menos caracteres e sendo mais eficiente para ordenar sufixos.
+
+Execução:
+make 
+./main a.out ../in/arquivo_de_entrada contexto
