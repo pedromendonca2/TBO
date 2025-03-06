@@ -1,0 +1,36 @@
+Exercício 0: 
+
+limite inferior - 19.9
+limite superior - 10^6
+altura média - 47 (~ 4 * lnN) 
+
+Exercício 1: 
+
+altura média - 49
+
+Exercício 2:
+
+ITER    HEIGHT
+0       46 - 19
+1       55 - 19
+2       50 - 19
+3       50 - 19
+4       51 - 19
+5       47 - 19
+6       48 - 19
+7       48 - 19
+8       47 - 19
+9       54 - 19
+AVG     19
+
+Execício 3:
+
+A altura média permanece a mesma (48 sem balanceamento e 19 com) 
+no caso em que as entradas são aleatórias e também no caso
+em que são ordenadas. Contudo, a execução foi bem mais rápida.
+
+------
+
+A randomização proposta aparentemente não é suficiente e colocar os novos
+nós na raiz não parece diminuir a altura da árvore, resultado que somente
+o balanceamento conseguiu trazer.
