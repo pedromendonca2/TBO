@@ -74,7 +74,7 @@ BST* BST_insert(BST *t, int key) {
         t->l = BST_insert(t->l, key);
     } else if (key > t->key) {
         t->r = BST_insert(t->r, key);
-    } //else: (key == t->key)
+    } else (key == t->key);
     return t; // Nothing to do.
 }
 
