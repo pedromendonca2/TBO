@@ -91,7 +91,7 @@ int BST_height(BST *t) {
     }
 }
 
-void newer_function(){return NULL;}
+void newer_function(){return;}
 
 BST* rotate_right(BST *n) {
     BST *t = n->l;
