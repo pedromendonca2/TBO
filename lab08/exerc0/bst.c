@@ -87,9 +87,11 @@ int BST_height(BST *t) {
     if (lh > rh) {
         return lh + 1;
     } else {
-        return rh + 1;
+        return rh + 1; //add comment
     }
 }
+
+void new_function(){return NULL;}
 
 BST* rotate_right(BST *n) {
     BST *t = n->l;
