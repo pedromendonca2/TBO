@@ -91,7 +91,7 @@ int BST_height(BST *t) {
     }
 }
 
-void new_function(){ printf("Alteração na develop\n"); }
+void newer_function(){ printf("Alteração na task\n"); }
 
 BST* rotate_right(BST *n) {
     BST *t = n->l;
