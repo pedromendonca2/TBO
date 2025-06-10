@@ -25,6 +25,6 @@ void rec_postorder(BST *t, void (*visit)(BST*));
 // Basic visitor that just prints the node key.
 void visit_print(BST*);
 
-void function_b();
+void function_a();
 
 #endif
