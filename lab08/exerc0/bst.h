@@ -25,6 +25,4 @@ void rec_postorder(BST *t, void (*visit)(BST*));
 // Basic visitor that just prints the node key.
 void visit_print(BST*);
 
-void void_function(){ printf("Alteration at develop switch"); };
-
 #endif
